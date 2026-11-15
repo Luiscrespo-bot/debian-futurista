@@ -16,12 +16,12 @@ if [[ ! -r /etc/os-release ]]; then
   exit 1
 fi
 . /etc/os-release
-if [[ "\${ID:-}" != "debian" ]]; then
-  echo "Este instalador está preparado para Debian. Detectado: \${PRETTY_NAME:-desconocido}"
+if [[ "${ID:-}" != "debian" ]]; then
+  echo "Este instalador está preparado para Debian. Detectado: ${PRETTY_NAME:-desconocido}"
   exit 1
 fi
 
-TARGET_USER="\${SUDO_USER:-}"
+TARGET_USER="${SUDO_USER:-}"
 if [[ -z "$TARGET_USER" || "$TARGET_USER" == "root" ]]; then
   echo "Por seguridad, inicia sesión con un usuario normal y ejecuta este script con sudo."
   exit 1
